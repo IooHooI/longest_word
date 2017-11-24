@@ -22,6 +22,6 @@ public class LongestWordReducer extends Reducer<IntWritable, Text, Text, IntWrit
                 }
             }
         }
-        context.write(new Text("bla"), new IntWritable(1));
+        context.write(new Text(templongestWordsList.toString()), new IntWritable(longestWord.length()));
     }
 }

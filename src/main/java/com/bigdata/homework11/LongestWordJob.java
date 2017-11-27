@@ -8,7 +8,9 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 public class LongestWordJob {
@@ -22,6 +24,8 @@ public class LongestWordJob {
             System.exit(2);
         }
         Job job = Job.getInstance(conf, "Longest Word");
+        job.setInputFormatClass(TextInputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
         job.setJarByClass(LongestWordJob.class);
         job.setMapperClass(TokenizerMapper.class);
         job.setReducerClass(LongestWordReducer.class);

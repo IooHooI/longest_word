@@ -24,13 +24,19 @@ public class LongestWordJob {
             System.exit(2);
         }
         Job job = Job.getInstance(conf, "Longest Word");
+
         job.setInputFormatClass(TextInputFormat.class);
+
         job.setOutputFormatClass(TextOutputFormat.class);
+
         job.setJarByClass(LongestWordJob.class);
+
         job.setMapperClass(TokenizerMapper.class);
         job.setReducerClass(LongestWordReducer.class);
+
         job.setMapOutputKeyClass(IntWritable.class);
         job.setMapOutputValueClass(Text.class);
+
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
 
